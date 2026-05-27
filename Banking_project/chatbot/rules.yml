@@ -1,0 +1,33 @@
+# chatbot/rules.yml
+# ------------------
+# Rules: ALWAYS trigger these actions for specific intents.
+# Rules override stories — they're deterministic (no ML involved).
+
+version: "3.1"
+
+rules:
+
+  - rule: Always greet on hello
+    steps:
+      - intent: greet
+      - action: utter_greet
+
+  - rule: Always say goodbye
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - rule: Always show help on help intent
+    steps:
+      - intent: ask_help
+      - action: utter_help
+
+  - rule: Block card immediately when requested
+    steps:
+      - intent: block_card
+      - action: action_block_card
+
+  - rule: Default fallback
+    steps:
+      - intent: nlu_fallback
+      - action: utter_default

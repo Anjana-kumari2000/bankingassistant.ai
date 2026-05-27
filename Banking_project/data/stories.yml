@@ -1,0 +1,133 @@
+version: "3.1"
+
+stories:
+
+- story: User greets and checks balance
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: check_balance
+    - action: utter_check_balance
+
+- story: User greets and withdraws money
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: withdraw_money
+    - action: utter_withdraw_money
+
+- story: User greets and deposits money
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: deposit_money
+    - action: utter_deposit_money
+
+- story: User greets and transfers money
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: transfer_money
+    - action: utter_transfer_money
+
+- story: User greets and asks for loan
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: loan_inquiry
+    - action: utter_loan_inquiry
+
+- story: User greets and opens account
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: account_opening
+    - action: utter_account_opening
+
+- story: User greets and says goodbye
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: goodbye
+    - action: utter_goodbye
+
+- story: User checks balance then withdraws
+  steps:
+    - intent: check_balance
+    - action: utter_check_balance
+    - intent: withdraw_money
+    - action: utter_withdraw_money
+    - intent: goodbye
+    - action: utter_goodbye
+
+- story: User checks balance then deposits
+  steps:
+    - intent: check_balance
+    - action: utter_check_balance
+    - intent: deposit_money
+    - action: utter_deposit_money
+    - intent: goodbye
+    - action: utter_goodbye
+
+- story: User checks balance then transfers
+  steps:
+    - intent: check_balance
+    - action: utter_check_balance
+    - intent: transfer_money
+    - action: utter_transfer_money
+    - intent: goodbye
+    - action: utter_goodbye
+
+- story: User withdraws then checks balance
+  steps:
+    - intent: withdraw_money
+    - action: utter_withdraw_money
+    - intent: check_balance
+    - action: utter_check_balance
+    - intent: goodbye
+    - action: utter_goodbye
+
+- story: User deposits then checks balance
+  steps:
+    - intent: deposit_money
+    - action: utter_deposit_money
+    - intent: check_balance
+    - action: utter_check_balance
+    - intent: goodbye
+    - action: utter_goodbye
+
+- story: User asks for loan then opens account
+  steps:
+    - intent: loan_inquiry
+    - action: utter_loan_inquiry
+    - intent: account_opening
+    - action: utter_account_opening
+    - intent: goodbye
+    - action: utter_goodbye
+
+- story: User transfers then says goodbye
+  steps:
+    - intent: transfer_money
+    - action: utter_transfer_money
+    - intent: goodbye
+    - action: utter_goodbye
+
+- story: User opens account then goodbye
+  steps:
+    - intent: account_opening
+    - action: utter_account_opening
+    - intent: goodbye
+    - action: utter_goodbye
+
+- story: Full banking session
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: check_balance
+    - action: utter_check_balance
+    - intent: withdraw_money
+    - action: utter_withdraw_money
+    - intent: transfer_money
+    - action: utter_transfer_money
+    - intent: goodbye
+    - action: utter_goodbye

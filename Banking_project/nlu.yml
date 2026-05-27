@@ -1,0 +1,142 @@
+version: "3.1"
+
+nlu:
+
+- intent: check_balance
+  examples: |
+    - check balance
+    - balance check
+    - my balance
+    - what is my balance
+    - account balance
+    - balance kitna hai
+    - mera balance batao
+    - kitna paisa hai account mein
+    - balance dekhna hai
+    - account mein kitne paise hain
+    - show my balance
+    - current balance
+    - available balance
+    - balance check karna hai
+    - mera account balance kya hai
+
+- intent: withdraw_money
+  examples: |
+    - withdraw
+    - withdraw money
+    - withdrawal
+    - I want to withdraw
+    - withdraw cash
+    - take out money
+    - paise nikalna hai
+    - paise nikaalo
+    - nikalna hai paisa
+    - cash withdraw karna hai
+    - account se paisa nikalna hai
+    - mujhe withdraw karna hai
+    - I need to withdraw money
+    - how to withdraw
+    - withdrawal karna hai
+
+- intent: deposit_money
+  examples: |
+    - deposit
+    - deposit money
+    - I want to deposit
+    - add money
+    - put money in account
+    - paise dalna hai
+    - account mein paisa daalo
+    - deposit karna hai
+    - paisa jama karna hai
+    - jama karo paisa
+    - cash deposit
+    - deposit cash
+    - money deposit karna hai
+    - account mein paise dalne hain
+    - how to deposit
+
+- intent: transfer_money
+  examples: |
+    - transfer money
+    - send money
+    - transfer
+    - I want to transfer
+    - money transfer karna hai
+    - paisa transfer karo
+    - paise bhejne hain
+    - transfer karna hai
+    - send funds
+    - paisa bhejna hai
+    - kisi ko paisa bhejna hai
+    - transfer to another account
+    - fund transfer
+    - NEFT karna hai
+    - IMPS transfer
+
+- intent: loan_inquiry
+  examples: |
+    - loan
+    - I want a loan
+    - loan lena hai
+    - loan chahiye
+    - personal loan
+    - home loan
+    - car loan
+    - loan ke baare mein batao
+    - loan kaise milega
+    - loan apply karna hai
+    - loan inquiry
+    - loan information
+    - loan eligibility
+    - mujhe loan chahiye
+    - loan ki jaankari chahiye
+
+- intent: account_opening
+  examples: |
+    - open account
+    - new account
+    - account kholna hai
+    - account banana hai
+    - naya account chahiye
+    - I want to open an account
+    - how to open account
+    - account opening
+    - savings account kholna hai
+    - current account open karna hai
+    - bank account banana hai
+    - new bank account
+    - account open kaise karte hain
+    - mujhe account kholna hai
+    - account registration
+
+- intent: goodbye
+  examples: |
+    - bye
+    - goodbye
+    - see you
+    - exit
+    - quit
+    - band karo
+    - alvida
+    - ok bye
+    - thank you bye
+    - that's all
+    - bas itna hi
+    - done
+    - ok thanks bye
+    - see you later
+    - take care
+
+    - intent: provide_amount
+  examples: |
+    - 14000
+    - 5000
+    - 1000
+    - 500
+    - 10000
+    - 25000
+    - 100
+    - amount is 5000
+    - 2000 rupees
+    - withdraw 3000

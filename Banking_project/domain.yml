@@ -1,0 +1,66 @@
+version: "3.1"
+
+intents:
+  - greet
+  - check_balance
+  - withdraw_money
+  - deposit_money
+  - transfer_money
+  - loan_inquiry
+  - account_opening
+  - goodbye
+  - provide_amount
+
+entities:
+  - amount
+  - account_number
+
+slots:
+  amount:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: amount
+  account_number:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: account_number
+
+responses:
+  utter_greet:
+    - text: "Hello! Welcome to Banking Chatbot."
+  utter_check_balance:
+    - text: "Aapka balance 25000 rupay hai."
+  utter_withdraw_money:
+    - text: "Kitna paisa withdraw karna hai?"
+  utter_deposit_money:
+    - text: "Kitna paisa deposit karna hai?"
+  utter_transfer_money:
+    - text: "Account number aur amount batayein."
+  utter_loan_inquiry:
+    - text: "Home Loan 8.5%, Car Loan 9.5%, Personal Loan 11% available hai."
+  utter_account_opening:
+    - text: "Aadhar, PAN, Photos lekar branch mein aayein."
+  utter_goodbye:
+    - text: "Shukriya! Have a great day!"
+  utter_provide_amount:
+    - text: "Amount note ho gaya. Kuch aur chahiye?"
+  utter_default:
+    - text: "Samajh nahi aaya, dobara poochein."
+
+actions:
+  - utter_greet
+  - utter_check_balance
+  - utter_withdraw_money
+  - utter_deposit_money
+  - utter_transfer_money
+  - utter_loan_inquiry
+  - utter_account_opening
+  - utter_goodbye
+  - utter_provide_amount
+  - utter_default
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

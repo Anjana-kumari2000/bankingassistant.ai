@@ -1,0 +1,43 @@
+version: "3.1"
+
+stories:
+
+- story: greet flow
+  steps:
+    - intent: greet
+    - action: utter_greet
+
+- story: mood good flow
+  steps:
+    - intent: mood_good
+    - action: utter_mood_good
+
+- story: mood bad flow
+  steps:
+    - intent: mood_bad
+    - action: utter_mood_bad
+
+- story: goodbye flow
+  steps:
+    - intent: goodbye
+    - action: utter_goodbye
+
+-  story: withdraw money flow
+   steps:
+    - intent: withdraw_money
+    - action: utter_withdraw_money
+
+- story: balance check
+  steps:
+    - intent: check_balance
+    - action: utter_check_balance
+
+- story: transfer money
+  steps:
+    - intent: transfer_money
+    - action: utter_transfer_money
+
+- story: thank you
+  steps:
+    - intent: thank_you
+    - action: utter_thank_you

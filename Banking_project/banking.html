@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Advanced Banking Assistant</title>
+
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#0f172a,#1e1b4b);
+}
+
+.chat-container{
+    width:430px;
+    height:94vh;
+    background:#071021;
+    border-radius:25px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    box-shadow:0 0 30px rgba(0,0,0,0.5);
+}
+
+.header{
+    background:linear-gradient(90deg,#7c3aed,#4f46e5);
+    color:white;
+    padding:20px;
+    text-align:center;
+    font-size:25px;
+    font-weight:bold;
+}
+
+.status{
+    font-size:13px;
+    margin-top:5px;
+    color:#d1d5db;
+}
+
+.quick-buttons{
+    display:flex;
+    gap:10px;
+    padding:12px;
+    overflow-x:auto;
+    scrollbar-width:none;
+}
+
+.quick-buttons::-webkit-scrollbar{
+    display:none;
+}
+
+.quick-buttons button{
+    border:none;
+    padding:10px 15px;
+    border-radius:20px;
+    background:#1e293b;
+    color:white;
+    cursor:pointer;
+    white-space:nowrap;
+    transition:0.3s;
+}
+
+.quick-buttons button:hover{
+    background:#7c3aed;
+}
+
+.chat-box{
+    flex:1;
+    padding:15px;
+    overflow-y:auto;
+}
+
+.message{
+    display:flex;
+    margin-bottom:15px;
+}
+
+.user{
+    justify-content:flex-end;
+}
+
+.bot{
+    justify-content:flex-start;
+}
+
+.bubble{
+    max-width:80%;
+    padding:14px;
+    border-radius:18px;
+    color:white;
+    line-height:1.6;
+    word-wrap:break-word;
+}
+
+.user .bubble{
+    background:linear-gradient(90deg,#7c3aed,#4f46e5);
+}
+
+.bot .bubble{
+    background:#1e293b;
+}
+
+.input-area{
+    display:flex;
+    gap:10px;
+    padding:15px;
+    background:#111827;
+}
+
+.input-area input{
+    flex:1;
+    border:none;
+    outline:none;
+    padding:12px;
+    border-radius:12px;
+    background:#1e293b;
+    color:white;
+}
+
+.input-area button{
+    border:none;
+    padding:12px 18px;
+    border-radius:12px;
+    background:#7c3aed;
+    color:white;
+    cursor:pointer;
+}
+
+.card{
+    background:#1e293b;
+    color:white;
+    padding:15px;
+    border-radius:15px;
+    margin-bottom:15px;
+}
+
+.card-row{
+    display:flex;
+    justify-content:space-between;
+    padding:8px 0;
+    border-bottom:1px solid #374151;
+}
+
+.card-row:last-child{
+    border:none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="chat-container">
+
+    <div class="header">
+
+        🏦 Banking Assistant
+
+        <div class="status">
+            Online — Ready to Help
+        </div>
+
+    </div>
+
+    <div class="quick-buttons">
+
+        <button onclick="quickReply('balance')">
+            💰 Balance
+        </button>
+
+        <button onclick="quickReply('transactions')">
+            📄 Transactions
+        </button>
+
+        <button onclick="quickReply('transfer')">
+            💸 Transfer
+        </button>
+
+        <button onclick="quickReply('cash withdraw')">
+            🏧 Withdraw
+        </button>
+
+        <button onclick="quickReply('loan')">
+            🏦 Loan
+        </button>
+
+        <button onclick="quickReply('credit card')">
+            💳 Card
+        </button>
+
+        <button onclick="quickReply('upi')">
+            📱 UPI
+        </button>
+
+        <button onclick="quickReply('recharge')">
+            📲 Recharge
+        </button>
+
+        <button onclick="quickReply('deposit')">
+            💵 Deposit
+        </button>
+
+        <button onclick="quickReply('mini statement')">
+            📋 Statement
+        </button>
+
+        <button onclick="createAccount()">
+            ➕ Create
+        </button>
+
+        <button onclick="showAccounts()">
+            👤 Accounts
+        </button>
+
+        <button onclick="clearAccounts()">
+            🗑️ Clear
+        </button>
+
+    </div>
+
+    <div class="chat-box" id="chatBox">
+
+        <div class="message bot">
+
+            <div class="bubble">
+
+                👋 Welcome to <b>Banking Assistant</b><br><br>
+
+                Available Services:<br><br>
+
+                💰 Balance Check<br>
+                📄 Transactions<br>
+                💸 Transfer Money<br>
+                🏧 ATM Withdraw<br>
+                🏦 Loan Service<br>
+                💳 Credit Card<br>
+                📱 UPI Service<br>
+                📲 Mobile Recharge<br>
+                💵 Deposit Money<br>
+                📋 Mini Statement<br>
+                ➕ Create Account<br>
+                👤 Show Accounts
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="input-area">
+
+        <input
+        type="text"
+        id="userInput"
+        placeholder="Type message...">
+
+        <button onclick="sendMessage()">
+            Send
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+const chatBox =
+document.getElementById("chatBox");
+
+let accounts =
+JSON.parse(
+localStorage.getItem("accounts")
+) || [];
+
+function addMessage(text,sender){
+
+    const messageDiv =
+    document.createElement("div");
+
+    messageDiv.classList.add(
+        "message",
+        sender
+    );
+
+    const bubble =
+    document.createElement("div");
+
+    bubble.classList.add("bubble");
+
+    bubble.innerHTML = text;
+
+    messageDiv.appendChild(bubble);
+
+    chatBox.appendChild(messageDiv);
+
+    chatBox.scrollTop =
+    chatBox.scrollHeight;
+}
+
+function addBalanceCard(){
+
+    const card =
+    document.createElement("div");
+
+    card.classList.add("card");
+
+    card.innerHTML = `
+
+        <div class="card-row">
+            <span>Savings Account</span>
+            <span>₹45,000</span>
+        </div>
+
+        <div class="card-row">
+            <span>Current Account</span>
+            <span>₹12,500</span>
+        </div>
+
+        <div class="card-row">
+            <span>Status</span>
+            <span>Active</span>
+        </div>
+
+    `;
+
+    chatBox.appendChild(card);
+
+    chatBox.scrollTop =
+    chatBox.scrollHeight;
+}
+
+function createAccount(){
+
+    const name =
+    prompt("Enter Customer Name");
+
+    if(!name) return;
+
+    const balance =
+    prompt("Enter Opening Balance");
+
+    if(!balance) return;
+
+    const accountNo =
+    "AC" + Math.floor(
+        Math.random()*100000
+    );
+
+    const account = {
+
+        name:name,
+        balance:balance,
+        accountNo:accountNo
+
+    };
+
+    accounts.push(account);
+
+    localStorage.setItem(
+        "accounts",
+        JSON.stringify(accounts)
+    );
+
+    addMessage(
+        "✅ Account Created Successfully",
+        "bot"
+    );
+
+    addMessage(
+        `
+        👤 Name: ${name}<br>
+        🏦 Account No: ${accountNo}<br>
+        💰 Balance: ₹${balance}
+        `,
+        "bot"
+    );
+}
+
+function showAccounts(){
+
+    if(accounts.length===0){
+
+        addMessage(
+            "❌ No Accounts Found",
+            "bot"
+        );
+
+        return;
+    }
+
+    let html =
+    "<b>📋 All Accounts</b><br><br>";
+
+    accounts.forEach((acc,index)=>{
+
+        html += `
+
+        ${index+1}. 👤 ${acc.name}<br>
+        🏦 ${acc.accountNo}<br>
+        💰 ₹${acc.balance}<br><br>
+
+        `;
+    });
+
+    addMessage(html,"bot");
+}
+
+function clearAccounts(){
+
+    localStorage.removeItem(
+        "accounts"
+    );
+
+    accounts = [];
+
+    addMessage(
+        "🗑️ All Accounts Deleted",
+        "bot"
+    );
+}
+
+function botReply(message){
+
+    message =
+    message.toLowerCase();
+
+    let response =
+    "❌ Sorry, I didn't understand that.";
+
+    if(message.includes("balance")){
+
+        response =
+        "💰 Here is your account balance:";
+
+        setTimeout(()=>{
+
+            addMessage(response,"bot");
+
+            addBalanceCard();
+
+        },500);
+
+        return;
+    }
+
+    else if(
+        message.includes("transaction")
+    ){
+
+        response =
+        "📄 Recent Transactions:<br><br>" +
+        "1. ATM Withdraw - ₹2,000<br>" +
+        "2. Amazon Pay - ₹1,500<br>" +
+        "3. Salary Credit - ₹50,000";
+    }
+
+    else if(
+        message.includes("transfer")
+    ){
+
+        response =
+        "💸 Money transfer service available.";
+    }
+
+    else if(
+        message.includes("cash") ||
+        message.includes("withdraw") ||
+        message.includes("atm")
+    ){
+
+        response =
+        "🏧 You can withdraw cash from nearest ATM.";
+    }
+
+    else if(
+        message.includes("loan")
+    ){
+
+        response =
+        "🏦 Loan available upto ₹5,00,000.";
+    }
+
+    else if(
+        message.includes("credit card")
+    ){
+
+        response =
+        "💳 You are eligible for Platinum Credit Card.";
+    }
+
+    else if(
+        message.includes("upi")
+    ){
+
+        response =
+        "📱 Your UPI ID is user@bank.";
+    }
+
+    else if(
+        message.includes("recharge")
+    ){
+
+        response =
+        "📲 Mobile recharge service available.";
+    }
+
+    else if(
+        message.includes("deposit")
+    ){
+
+        response =
+        "💵 Deposit successful.";
+    }
+
+    else if(
+        message.includes("mini statement")
+    ){
+
+        response =
+        "📋 Mini Statement:<br><br>" +
+        "ATM Withdraw - ₹2000<br>" +
+        "Amazon Pay - ₹1500<br>" +
+        "Salary Credit - ₹50000";
+    }
+
+    else if(
+        message.includes("block")
+    ){
+
+        response =
+        "🔒 Your card has been blocked.";
+    }
+
+    else if(
+        message.includes("hi") ||
+        message.includes("hello")
+    ){
+
+        response =
+        "👋 Hello! How may I assist you?";
+    }
+
+    else if(
+        message.includes("show account")
+    ){
+
+        showAccounts();
+
+        return;
+    }
+
+    else if(
+        message.includes("create account")
+    ){
+
+        createAccount();
+
+        return;
+    }
+
+    setTimeout(()=>{
+
+        addMessage(response,"bot");
+
+    },500);
+}
+
+function sendMessage(){
+
+    const input =
+    document.getElementById(
+        "userInput"
+    );
+
+    const text =
+    input.value.trim();
+
+    if(text==="") return;
+
+    addMessage(text,"user");
+
+    botReply(text);
+
+    input.value="";
+}
+
+function quickReply(text){
+
+    addMessage(text,"user");
+
+    botReply(text);
+}
+
+document
+.getElementById("userInput")
+.addEventListener(
+    "keypress",
+    function(e){
+
+        if(e.key==="Enter"){
+
+            sendMessage();
+        }
+    }
+);
+
+</script>
+
+</body>
+</html>

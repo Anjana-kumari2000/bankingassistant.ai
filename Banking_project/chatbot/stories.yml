@@ -1,0 +1,49 @@
+# chatbot/stories.yml
+# --------------------
+# Stories: example conversation flows that train Rasa's dialogue model.
+# Each story = one possible conversation path.
+
+version: "3.1"
+
+stories:
+
+  - story: user greets and asks help
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_help
+      - action: utter_help
+
+  - story: check balance happy path
+    steps:
+      - intent: check_balance
+      - action: utter_ask_account_number
+      - intent: check_balance
+        entities:
+          - account_number: "ACC123456789"
+      - action: action_check_balance
+
+  - story: deposit money happy path
+    steps:
+      - intent: deposit_money
+      - action: utter_ask_account_number
+      - intent: deposit_money
+        entities:
+          - account_number: "ACC123456789"
+          - amount: 5000
+      - action: action_deposit
+
+  - story: transfer with confirmation
+    steps:
+      - intent: transfer_money
+      - action: utter_ask_account_number
+      - intent: transfer_money
+        entities:
+          - account_number: "ACC987654321"
+          - amount: 1000
+      - action: action_transfer
+
+  - story: goodbye
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye

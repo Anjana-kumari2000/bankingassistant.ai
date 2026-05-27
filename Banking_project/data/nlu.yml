@@ -1,0 +1,39 @@
+version: "3.1"
+
+nlu:
+
+- intent: greet
+  examples: |
+    - hi
+    - hello
+    - hey
+    - good morning
+    - good evening
+
+- intent: goodbye
+  examples: |
+    - bye
+    - goodbye
+    - see you later
+    - exit
+    - quit
+
+- intent: withdraw_money
+  examples: |
+    - withdraw
+    - withdrawal
+    - withdrawals
+    - withdraw money
+    - withdraw cash
+    - i want to withdraw money
+    - cash withdrawal
+    - take out money
+    - remove money
+    - debit money
+
+- intent: check_balance
+  examples: |
+    - check balance
+    - show balance
+    - account balance
+    - how much balance do i have

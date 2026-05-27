@@ -1,0 +1,114 @@
+# chatbot/nlu.yml
+# ----------------
+# NLU training data: examples of what users say for each intent.
+# The more examples, the better Rasa understands varied phrasings.
+
+version: "3.1"
+
+nlu:
+
+  - intent: greet
+    examples: |
+      - hello
+      - hi
+      - hey
+      - good morning
+      - good evening
+      - namaste
+      - what's up
+      - hi there
+
+  - intent: goodbye
+    examples: |
+      - bye
+      - goodbye
+      - see you later
+      - thanks bye
+      - I'm done
+      - exit
+      - quit
+
+  - intent: check_balance
+    examples: |
+      - what is my balance
+      - check balance
+      - show my account balance
+      - how much money do I have
+      - balance check for [ACC123456789](account_number)
+      - tell me the balance of [ACC987654321](account_number)
+      - mera balance kitna hai
+      - balance dekhna hai
+
+  - intent: deposit_money
+    examples: |
+      - deposit [5000](amount) rupees
+      - I want to deposit [10000](amount)
+      - add [2500](amount) to my account
+      - put [1000](amount) in [ACC123456789](account_number)
+      - credit [500](amount) to my account
+      - paisa deposit karna hai [3000](amount)
+
+  - intent: withdraw_money
+    examples: |
+      - withdraw [2000](amount) rupees
+      - I need [5000](amount) from my account
+      - take out [1500](amount)
+      - withdrawal of [3000](amount) from [ACC123456789](account_number)
+      - paise nikalne hain [1000](amount)
+      - debit [2000](amount)
+
+  - intent: transfer_money
+    examples: |
+      - transfer [5000](amount) to [ACC987654321](account_number)
+      - send [1000](amount) to another account
+      - I want to transfer money
+      - move [3000](amount) to [ACC111222333](account_number)
+      - fund transfer karna hai
+      - bhejo [2000](amount)
+
+  - intent: transaction_history
+    examples: |
+      - show my transactions
+      - transaction history
+      - show last 5 transactions
+      - what are my recent transactions
+      - history of account [ACC123456789](account_number)
+      - meri transactions dikhao
+
+  - intent: block_card
+    examples: |
+      - block my card
+      - I lost my card
+      - my card was stolen
+      - freeze my account
+      - card band karo
+      - stop transactions on my account
+
+  - intent: ask_help
+    examples: |
+      - help
+      - what can you do
+      - I need help
+      - show options
+      - what are your features
+      - kya kar sakte ho
+
+  - intent: affirm
+    examples: |
+      - yes
+      - yeah
+      - sure
+      - okay
+      - confirm
+      - go ahead
+      - haan
+      - bilkul
+
+  - intent: deny
+    examples: |
+      - no
+      - nope
+      - cancel
+      - stop
+      - never mind
+      - nahi

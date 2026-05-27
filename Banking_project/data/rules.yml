@@ -1,0 +1,53 @@
+version: "3.1"
+
+rules:
+
+- rule: Greet user
+  steps:
+    - intent: greet
+    - action: utter_greet
+
+- rule: Check Balance
+  steps:
+    - intent: check_balance
+    - action: utter_check_balance
+
+- rule: Withdraw Money
+  steps:
+    - intent: withdraw_money
+    - action: utter_withdraw_money
+
+- rule: Deposit Money
+  steps:
+    - intent: deposit_money
+    - action: utter_deposit_money
+
+- rule: Transfer Money
+  steps:
+    - intent: transfer_money
+    - action: utter_transfer_money
+
+- rule: Loan Inquiry
+  steps:
+    - intent: loan_inquiry
+    - action: utter_loan_inquiry
+
+- rule: Account Opening
+  steps:
+    - intent: account_opening
+    - action: utter_account_opening
+
+- rule: Goodbye
+  steps:
+    - intent: goodbye
+    - action: utter_goodbye
+
+- rule: Default Fallback
+  steps:
+    - intent: nlu_fallback
+    - action: utter_default
+
+- rule: Amount provided
+  steps:
+    - intent: provide_amount
+    - action: utter_provide_amount
