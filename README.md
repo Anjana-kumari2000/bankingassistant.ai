@@ -13,23 +13,39 @@ and Machine Learning.
 -The project is designed to help users interact with banking services through 
 conversational messages instead of traditional manual support systems.
 
+# FastAPI in Banking Assistant AI Project
+
+Currently, your Banking Assistant AI project mainly uses:
+
+Flask for backend
+Rasa for chatbot and NLP
+
+But you can also use FastAPI instead of Flask for faster API performance and modern backend development.
+
+# FastAPI Libraries Used
+-Library	Purpose
+FastAPI	Backend API
+Uvicorn	Run FastAPI server
+Requests	Connect with Rasa
+
 # Main Objectives
--Automate banking customer support
--Provide instant responses to customer queries
--Reduce manual workload of bank employees
--Improve customer experience using AI chatbot technology
--Understand user messages using NLP
--Handle banking-related conversations intelligently
--Provide loan and EMI information
--Support account-related assistance
--Create a real-time chatbot using Rasa
--Integrate frontend, backend, and database systems
--Learn chatbot development using Python and AI technologies
+Automate banking customer support
+Provide instant responses to customer queries
+Reduce manual workload of bank employees
+Improve customer experience using AI chatbot technology
+Understand user messages using NLP
+Handle banking-related conversations intelligently
+Provide loan and EMI information
+Support account-related assistance
+Create a real-time chatbot using Rasa
+Integrate frontend, backend, and database systems
+Learn chatbot development using Python and AI technologies
 
 # Recommended Versions for Banking Assistant AI
--Software	Version
--Python	3.10.11 or 3.13.3
--Rasa	3.6.20
+Software	Version
+Python	3.10.11 or 3.13.3
+Rasa	3.6.20
+FastApi 0.110.0
 
 # Software Requirements for Banking Assistant AI
 | Software           | Purpose             |
@@ -58,6 +74,8 @@ conversational messages instead of traditional manual support systems.
 -pip install -r requirements.txt
 
 -pip install rasa==3.6.20
+
+pip install fastapi==0.110.0
 
 -rasa train
 
